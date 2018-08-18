@@ -12,6 +12,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using WebApiCore.Constraints;
 using WebApiCore.Data;
+using WebApiCore.Filters;
 
 namespace WebApiCore
 {
@@ -43,14 +44,18 @@ namespace WebApiCore
                 routeOptions.ConstraintMap.Add("lastletter", typeof(LastLetter));
             });
 
-            services.AddMvc().AddJsonOptions(
-               options =>
+            services.AddMvc(options =>
+                {
+                    options.Filters.Add(new ModelValidationAttribute());
+                }).
+                AddJsonOptions(options =>
                {
                    //loop referans
                    options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
                    // raw olarakta düzgün gözükmesi için ekledik.
                    options.SerializerSettings.Formatting = Newtonsoft.Json.Formatting.Indented;
-               }).AddXmlDataContractSerializerFormatters();//xml desteğide vermek için kullandık,bunun için modelin üstünde annotation eklemek gerekiyor.(döngüsel refereans için)
+               }).
+                AddXmlDataContractSerializerFormatters();//xml desteğide vermek için kullandık,bunun için modelin üstünde annotation eklemek gerekiyor.(döngüsel refereans için)
 
         }
 
