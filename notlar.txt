@@ -1,0 +1,15 @@
+1)new->proje->web uygulamasý .net core > api
+
+
+2)databasedeki tablo isimleri çoðul
+
+3)class isimleri tekil
+
+4)Models klasörünü oluþtur.
+5)Data klasörünü ve datacontext classýný oluþtur
+6) appsettings.json da connectionstringin yolunu ver.
+7) startup.cs den 5-6 maddeleri birbirine baðla.
+
+#content negotaition
+	-birden fazla accept eklemek için ; Accept:application/json,application/xml
+	-üstünlük derecesine göre yanýt için ; Accept:application/json:q=0.7,application/xml:q=0.3

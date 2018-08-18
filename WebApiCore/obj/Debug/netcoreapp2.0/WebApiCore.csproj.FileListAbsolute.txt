@@ -1,0 +1,11 @@
+C:\Users\İsmail\Source\Repos\WebApiCore\WebApiCore\bin\Debug\netcoreapp2.0\WebApiCore.deps.json
+C:\Users\İsmail\Source\Repos\WebApiCore\WebApiCore\bin\Debug\netcoreapp2.0\WebApiCore.runtimeconfig.json
+C:\Users\İsmail\Source\Repos\WebApiCore\WebApiCore\bin\Debug\netcoreapp2.0\WebApiCore.runtimeconfig.dev.json
+C:\Users\İsmail\Source\Repos\WebApiCore\WebApiCore\bin\Debug\netcoreapp2.0\WebApiCore.dll
+C:\Users\İsmail\Source\Repos\WebApiCore\WebApiCore\bin\Debug\netcoreapp2.0\WebApiCore.pdb
+C:\Users\İsmail\Source\Repos\WebApiCore\WebApiCore\obj\Debug\netcoreapp2.0\WebApiCore.csprojResolveAssemblyReference.cache
+C:\Users\İsmail\Source\Repos\WebApiCore\WebApiCore\obj\Debug\netcoreapp2.0\WebApiCore.csproj.CoreCompileInputs.cache
+C:\Users\İsmail\Source\Repos\WebApiCore\WebApiCore\obj\Debug\netcoreapp2.0\WebApiCore.AssemblyInfoInputs.cache
+C:\Users\İsmail\Source\Repos\WebApiCore\WebApiCore\obj\Debug\netcoreapp2.0\WebApiCore.AssemblyInfo.cs
+C:\Users\İsmail\Source\Repos\WebApiCore\WebApiCore\obj\Debug\netcoreapp2.0\WebApiCore.dll
+C:\Users\İsmail\Source\Repos\WebApiCore\WebApiCore\obj\Debug\netcoreapp2.0\WebApiCore.pdb
