@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Routing;
 using Microsoft.EntityFrameworkCore;
@@ -44,6 +45,15 @@ namespace WebApiCore
                 routeOptions.ConstraintMap.Add("lastletter", typeof(LastLetter));
             });
 
+            //Access control allow origin'e izin vermek için(tüm sitelere izin vermek için bu şekilde yaparız,belirli sitelere izin vermek
+            //içinse sadece services.AddCors() dedikten sonra Configure fonksyionunda istediğimiz siteleri tanımlarız.)
+            services.AddCors(o => o.AddPolicy("policy", builder =>
+            {
+                builder.AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader();
+            }));
+
             services.AddMvc(options =>
                 {
                     options.Filters.Add(new ModelValidationAttribute());
@@ -62,6 +72,10 @@ namespace WebApiCore
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
+            
+            //app.UseCors(
+            //    options => options.WithOrigins("http://example.com").AllowAnyMethod()
+            //);
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
 

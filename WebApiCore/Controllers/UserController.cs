@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using WebApiCore.Filters;
@@ -9,6 +10,8 @@ using WebApiCore.Models;
 
 namespace WebApiCore.Controllers
 {
+    [EnableCors("http://localhost:59452,http://localhost:25495")] //sadece bu classada cors verebiliriz yada sadece method'dada cors verebiliriz.
+    //[DisableCors]
     //[ModelValidation] startup classında global olarak tanımladığımız için gerek kalmadı.sadece bu class için kullansaydık global eklemezdik.
     [Route("api/users")]
     public class UserController : Controller
