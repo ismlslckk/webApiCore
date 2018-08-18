@@ -69,7 +69,6 @@ namespace WebApiCore.Controllers
             return Ok(new Uri(Url.Link("getValue",new { id=id })));
 
 
-
         }
 
         //not:Request.RequestUri ile "host/api/controller" değerini elde edebiliriz.
