@@ -17,7 +17,7 @@ namespace WebApiCore.Models
         [Required]
         [EmailAddress]
         public string Email { get; set; }
-        [Required]
+        [Required] 
         [StringLength(15, ErrorMessage = "Password length max 15 and min 6", MinimumLength = 6)]
         [RegularExpression(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{6,15}",ErrorMessage = "Password reqular expression error")]
         public string Password { get; set; }
