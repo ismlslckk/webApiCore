@@ -7,9 +7,12 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using WebApiCore.Filters;
 using WebApiCore.Models;
+using WebApiCore.UtilityClasses;
 
 namespace WebApiCore.Controllers
 {
+    [Error]
+    //[RequiredSSL]
     [EnableCors("http://localhost:59452,http://localhost:25495")] //sadece bu classada cors verebiliriz yada sadece method'dada cors verebiliriz.
     //[DisableCors]
     //[ModelValidation] startup classında global olarak tanımladığımız için gerek kalmadı.sadece bu class için kullansaydık global eklemezdik.
@@ -26,6 +29,12 @@ namespace WebApiCore.Controllers
         public ActionResult createUser([FromForm]User user)
         {
             return Ok("Created user");
+        }
+
+        [HttpGet("errorTest")]
+        public ActionResult ErrorTest()
+        {
+            throw new Exception("test error...");
         }
     }
 }

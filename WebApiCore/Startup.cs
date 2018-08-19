@@ -54,9 +54,11 @@ namespace WebApiCore
                     .AllowAnyHeader();
             }));
 
+
             services.AddMvc(options =>
                 {
                     options.Filters.Add(new ModelValidationAttribute());
+                    //options.Filters.Add(new RequiredSSLAttribute());//tüm proje için isteklerin hepsi ssl olan sayfalardan gelirse çalışıcak.
                 }).
                 AddJsonOptions(options =>
                {
