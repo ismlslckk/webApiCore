@@ -25,7 +25,8 @@ namespace WebApiCore.Filters
             context.Result = new ContentResult
             {
                 Content = errorResponse.ToString(),
-                StatusCode = 404
+                StatusCode = 404,
+                ContentType = "application/json"
             };
 
         }

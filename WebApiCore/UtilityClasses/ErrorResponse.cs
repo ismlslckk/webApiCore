@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc.Filters;
+using Newtonsoft.Json;
 
 namespace WebApiCore.UtilityClasses
 {
@@ -18,10 +19,16 @@ namespace WebApiCore.UtilityClasses
             this.ErrorController = context.RouteData.Values["controller"].ToString();
             this.ErrorMessage = context.Exception.ToString();
         }
-       
+
         public override string ToString()
         {
-            return string.Join(Environment.NewLine, new List<string>() {ErrorMessage, ErrorAction, ErrorController});
+            return JsonConvert.SerializeObject(new
+            {
+                ErrorMessage = ErrorMessage,
+                ErrorAction = ErrorAction,
+                ErrorController = ErrorController
+            });
         }
+
     }
 }
