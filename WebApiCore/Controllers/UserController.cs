@@ -11,7 +11,7 @@ using WebApiCore.UtilityClasses;
 
 namespace WebApiCore.Controllers
 {
-    [Error]
+    [Error,Action]
     //[RequiredSSL]
     [EnableCors("http://localhost:59452,http://localhost:25495")] //sadece bu classada cors verebiliriz yada sadece method'dada cors verebiliriz.
     //[DisableCors]
