@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Hosting;
@@ -11,6 +13,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Microsoft.IdentityModel.Tokens;
 using WebApiCore.Constraints;
 using WebApiCore.Data;
 using WebApiCore.Filters;
@@ -38,6 +41,24 @@ namespace WebApiCore
             services.AddDbContext<DataContext>
             (x => x.UseSqlServer(Configuration.
                 GetConnectionString("DefaultConnection")));
+
+            //authentication
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
+            {
+                options.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuer = true,
+                    ValidateAudience = true,
+                    ValidateIssuerSigningKey = true,
+                    ValidIssuer = "mysite.com",
+                    ValidAudience = "mysite.com",
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("ahbasshfbsahjfbshajbfhjasbfashjbfsajhfvashjfashfbsahfbsahfksdjf")),
+                    RequireExpirationTime = true,
+                    ClockSkew = TimeSpan.FromMinutes(3),
+                    ValidateLifetime = true
+                };
+
+            });
 
             //constraint tanımlaması
             services.Configure<RouteOptions>(routeOptions =>
@@ -80,6 +101,9 @@ namespace WebApiCore
             //);
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
+
+            //authentication
+            app.UseAuthentication();
 
             app.UseMvc();
         }

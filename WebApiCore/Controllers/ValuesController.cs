@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -25,6 +26,7 @@ namespace WebApiCore.Controllers
         // localhost:49272/degerler diyerek almış oluruz.
         //assenkron işlem yapmak için.
         [HttpGet("")]
+        [Authorize(Roles = "MyAdmin")]
         public async Task<ActionResult> GetValues()
         {
             //ilişkili tablolarda include ile almamız gerekir.
