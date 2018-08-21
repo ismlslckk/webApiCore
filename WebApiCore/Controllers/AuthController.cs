@@ -21,7 +21,7 @@ namespace WebApiCore.Controllers
             if (header.ToString().StartsWith("Basic"))
             {
                 var credValue = header.ToString().Substring("Basic ".Length).Trim();
-                var usernameAndPassenc = Encoding.UTF8.GetString(Convert.FromBase64String(credValue)); //admin:pass
+                var usernameAndPassenc = Encoding.UTF8.GetString(Convert.FromBase64String(credValue));
                 var usernameAndPass = usernameAndPassenc.Split(":");
                 //check in DB username and pass exist
 
