@@ -105,6 +105,9 @@ namespace WebApiCore
             //authentication
             app.UseAuthentication();
 
+            //static files enable
+            app.UseStaticFiles();
+
             app.UseMvc();
         }
     }

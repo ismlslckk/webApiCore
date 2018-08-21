@@ -40,7 +40,7 @@ namespace WebApiCore.Controllers
                     Guid g = Guid.NewGuid();
                      
                     var path = Path.Combine(
-                        Directory.GetCurrentDirectory(), "Files",
+                        Directory.GetCurrentDirectory(), "wwwroot\\Files",
                         g+ Path.GetExtension(file.FileName));
 
                     using (var stream = new FileStream(path, FileMode.Create))
@@ -49,7 +49,7 @@ namespace WebApiCore.Controllers
                     }
 
                     uploaded.Files.Add(
-                        new FileDetails { Name = file.FileName, Path = file.Name });
+                        new FileDetails { Name = file.FileName, Path = Request.Host.ToString()+"/Files/"+g + Path.GetExtension(file.FileName) });
                 }
 
                 return Ok(uploaded);
