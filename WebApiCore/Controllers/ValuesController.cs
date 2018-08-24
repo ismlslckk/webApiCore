@@ -15,11 +15,14 @@ namespace WebApiCore.Controllers
     public class ValuesController : Controller
     {
         private readonly DataContext _context;
+        private readonly IDeneme<Deneme2> _deneme;
 
-        public ValuesController(DataContext context)
+        public ValuesController(DataContext context, IDeneme<Deneme2> deneme)
         {
             //ctor 'a parametre olarak gelen context startup.cs den gelir.
             _context = context;
+            _deneme = deneme;
+             
         }
 
         // ~/degerler yaparak en üstteki route ezmiş oluruz bu sayede
@@ -29,6 +32,7 @@ namespace WebApiCore.Controllers
         [Authorize(Roles = "MyAdmin")]
         public async Task<ActionResult> GetValues()
         {
+           string ıOcDeneme= _deneme.yap();
             //ilişkili tablolarda include ile almamız gerekir.
             var values = await _context.Values.Include(x => x.TwoTables).ToListAsync();
             return Ok(values);

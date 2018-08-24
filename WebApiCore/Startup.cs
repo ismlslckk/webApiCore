@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using Autofac;
+using Autofac.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Cors;
@@ -35,7 +38,7 @@ namespace WebApiCore
         public IConfigurationRoot Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
-        public void ConfigureServices(IServiceCollection services)
+        public IServiceProvider ConfigureServices(IServiceCollection services)
         {
             //database baglantisi
             services.AddDbContext<DataContext>
@@ -89,6 +92,18 @@ namespace WebApiCore
                    options.SerializerSettings.Formatting = Newtonsoft.Json.Formatting.Indented;
                }).
                 AddXmlDataContractSerializerFormatters();//xml desteğide vermek için kullandık,bunun için modelin üstünde annotation eklemek gerekiyor.(döngüsel refereans için)
+
+
+            //IoC start
+            var builders = new ContainerBuilder();
+            builders.Populate(services);
+            // builders.RegisterType<Deneme>().As<IDeneme>();
+            builders.RegisterType<Deneme>().As<IDeneme<Deneme>>().SingleInstance();
+            builders.RegisterType<Deneme2>().As<IDeneme<Deneme2>>().SingleInstance();
+
+            var container = builders.Build();
+            return new AutofacServiceProvider(container);
+            //IoC end
 
         }
 
