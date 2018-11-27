@@ -10,7 +10,7 @@ namespace WebApiCore
     {
         public string yap()
         {
-            return "aaax";
+            return "aaax2";
         }
     }
 }
