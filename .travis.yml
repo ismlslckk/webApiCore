@@ -1,2 +1,8 @@
 language: csharp
 solution: WebApiCore.sln
+notifications:
+  email:
+    recipients:
+      - ismlslck@gmail.com 
+    on_success: always # default: change
+    on_failure: always # default: always
